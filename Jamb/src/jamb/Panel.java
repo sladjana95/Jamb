@@ -28,6 +28,7 @@ public class Panel extends JPanel{
     private int numberOfGames = 13;
     private final int numberOfDices = 5;
     private int dicesRolled = 0;
+    
     public int getPanelWidth() {
         return panelWidth;
     }
@@ -81,6 +82,7 @@ public class Panel extends JPanel{
             dices[i].setText("");
             dices[i].setBackground(new JButton().getBackground());
         }
+        roll.setEnabled(true);
         normalize();
     }
     
@@ -128,6 +130,8 @@ public class Panel extends JPanel{
                         if(nonChosenIndexes[i] < 0)
                             dices[i].setText("" + (random.nextInt(6) + 1));
                 }
+                if(dicesRolled ==3)
+                    roll.setEnabled(false);
             }
         });
         add(roll);
@@ -265,7 +269,7 @@ public class Panel extends JPanel{
                 rowNames[i].setVisible(true);
 
                 rowNames[i].setEnabled(false);
-                rowNames[i].setText("na");
+                rowNames[i].setText("");
                 //areaSum[i][j].setFont(new Font("Arial", Font.PLAIN, 8));
                 add(rowNames[i]);
             }
